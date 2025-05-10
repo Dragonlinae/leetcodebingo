@@ -163,13 +163,13 @@ function updateBoard() {
     var player1Score = 0;
     var player2Score = 0;
 
-    var player1rows = new Array(boardState.n).fill([0, 0]);
-    var player1cols = new Array(boardState.n).fill([0, 0]);
-    var player1diag = new Array(2).fill([0, 0]);
+    var player1rows = new Array(5).fill(0).map(() => [0, 0])
+    var player1cols = new Array(5).fill(0).map(() => [0, 0])
+    var player1diag = new Array(2).fill(0).map(() => [0, 0])
 
-    var player2rows = new Array(boardState.n).fill([0, 0]);
-    var player2cols = new Array(boardState.n).fill([0, 0]);
-    var player2diag = new Array(2).fill([0, 0]);
+    var player2rows = new Array(5).fill(0).map(() => [0, 0])
+    var player2cols = new Array(5).fill(0).map(() => [0, 0])
+    var player2diag = new Array(2).fill(0).map(() => [0, 0])
 
     for (let i = 0; i < boardState.squares.length; i++) {
       if (boardState.squares[i].selected === 1) {
@@ -178,11 +178,11 @@ function updateBoard() {
         player1rows[Math.floor(i / boardState.n)][1] = Math.max(player1rows[Math.floor(i / boardState.n)][1], boardState.squares[i].timestamp);
         player1cols[i % boardState.n][0]++;
         player1cols[i % boardState.n][1] = Math.max(player1cols[i % boardState.n][1], boardState.squares[i].timestamp);
-        if (i % (boardState.n + 1) === 0) {
+        if (i % (boardState.n) === Math.floor(i / boardState.n)) {
           player1diag[0][0]++;
           player1diag[0][1] = Math.max(player1diag[0][1], boardState.squares[i].timestamp);
         }
-        if (i % (boardState.n - 1) === 0 && i !== 0 && i !== boardState.n * boardState.n - 1) {
+        if (i % (boardState.n) === boardState.n - Math.floor(i / boardState.n) - 1) {
           player1diag[1][0]++;
           player1diag[1][1] = Math.max(player1diag[1][1], boardState.squares[i].timestamp);
         }
@@ -192,16 +192,19 @@ function updateBoard() {
         player2rows[Math.floor(i / boardState.n)][1] = Math.max(player2rows[Math.floor(i / boardState.n)][1], boardState.squares[i].timestamp);
         player2cols[i % boardState.n][0]++;
         player2cols[i % boardState.n][1] = Math.max(player2cols[i % boardState.n][1], boardState.squares[i].timestamp);
-        if (i % (boardState.n + 1) === 0) {
+        if (i % (boardState.n) === Math.floor(i / boardState.n)) {
           player2diag[0][0]++;
           player2diag[0][1] = Math.max(player2diag[0][1], boardState.squares[i].timestamp);
         }
-        if (i % (boardState.n - 1) === 0 && i !== 0 && i !== boardState.n * boardState.n - 1) {
+        if (i % (boardState.n) === boardState.n - Math.floor(i / boardState.n) - 1) {
           player2diag[1][0]++;
           player2diag[1][1] = Math.max(player2diag[1][1], boardState.squares[i].timestamp);
         }
       }
     }
+
+    console.log(player1rows, player1cols, player1diag);
+    console.log(player2rows, player2cols, player2diag);
 
 
     var player1Bingo = [false, Infinity];
@@ -338,6 +341,8 @@ async function startGame() {
     setupBoard();
   }
 
+  boardState.n = parseInt(boardState.n);
+
   updateInfo();
   runClock();
 
@@ -395,3 +400,4 @@ function runClock() {
 
 startGame();
 setInterval(updateBoard, 60000);
+updateBoard();
