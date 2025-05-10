@@ -1,0 +1,67 @@
+.bingo-board {
+  display: grid;
+  grid-template: repeat(5, 1fr) / repeat(5, 1fr);
+  margin: 10px auto;
+}
+
+
+.bingo-square {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  color: #333;
+  container-type: inline-size;
+  margin: 1vw;
+  overflow-wrap: break-word;
+  padding: 1vw;
+  text-align: center;
+  width: auto;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 1;
+}
+
+.bingo-square .square-text {
+  font-size: 15cqw;
+  margin: 0;
+}
+
+.bingo-square:hover {
+  background-color: #898989;
+  cursor: pointer;
+}
+
+.bingo-square.selected {
+  color: #fff;
+  transition: background-color 3s, color 3s;
+}
+
+.header {
+  font-size: 3vw;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 800px;
+}
+
+.info {
+  font-size: 1.5vw;
+}
+
+.players {
+  font-size: 3vw;
+}
+
+.btn {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  color: #333;
+  font-size: 1.5vw;
+  margin: 1vw;
+  padding: 1vw;
+}

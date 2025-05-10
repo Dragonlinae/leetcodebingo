@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Home</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>Bingo</h2>
+    </div>
+    <div class="content">
+      <form id="new-game" class="new-game">
+        <h3 class="title">New Game</h3>
+        <div class="game-settings">
+          <div class="game-setting-entry">
+            <label for="player1" class="label">Player 1</label>
+            <input type="text" id="player1" class="input" placeholder="Player 1">
+          </div>
+          <div class="game-setting-entry">
+            <label for="player2" class="label">Player 2</label>
+            <input type="text" id="player2" class="input" placeholder="Player 2">
+          </div>
+          <div class="game-setting-entry">
+            <label for="difficulty" class="label">Difficulty</label>
+            <select id="difficulty" class="input">
+              <option value="" selected>All</option>
+              <option value="EASY">Easy</option>
+              <option value="MEDIUM">Medium</option>
+              <option value="HARD">Hard</option>
+            </select>
+          </div>
+          <div class="game-setting-entry">
+            <label for="allow-premium" class="label">Allow Premium</label>
+            <input type="checkbox" id="allow-premium" class="input">
+          </div>
+          <div class="game-setting-entry">
+            <label for="board-size" class="label">Board Size</label>
+            <input type="number" id="board-size" class="input" placeholder="Board Size" value="5">
+          </div>
+          <div class="game-setting-entry">
+            <label for="start-time" class="label">Start Time</label>
+            <input type="time" id="start-time" class="input" placeholder="Start Time" value="00:00">
+          </div>
+        </div>
+        <p id="time-info" class="info">Starts in x minutes</p>
+        <button type="submit" class="btn">Start Game</button>
+      </form>
+      <form id="join-game" class="join-game">
+        <h3 class="title">Join Game</h3>
+        <div class="game-settings">
+          <div class="game-setting-entry">
+            <label for="game-code" class="label">Game Code</label>
+            <input type="text" id="game-code" class="input" placeholder="Game Code">
+          </div>
+        </div>
+        <button type="submit" class="btn">Join Game</button>
+      </form>
+    </div>
+  </div>
+</body>
+<script src="script.js"></script>
+
+</html>

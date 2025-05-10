@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Leetcode Lockout Bingo",
+  "description": "Play Leetcode Lockout Bingo",
+  "version": "1.0",
+  "action": {
+    "default_popup": "extension/index.html",
+    "default_icon": "FrogProgramming.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": ["https://leetcode.com/"]
+}
